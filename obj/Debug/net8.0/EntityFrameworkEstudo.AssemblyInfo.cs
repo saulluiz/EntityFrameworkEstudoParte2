@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EntityFrameworkEstudo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c612350b6e671c23d50c8b87e7d2070309b5e78f")]
 [assembly: System.Reflection.AssemblyProductAttribute("EntityFrameworkEstudo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EntityFrameworkEstudo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

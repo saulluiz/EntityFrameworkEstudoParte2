@@ -259,3 +259,4 @@ C:\Users\saulo\OneDrive\Área de Trabalho\DEV\Asp.net\EntityEstudo2\obj\Debug\ne
 C:\Users\saulo\OneDrive\Área de Trabalho\DEV\Asp.net\EntityEstudo2\obj\Debug\net8.0\EntityFrameworkEstudo.pdb
 C:\Users\saulo\OneDrive\Área de Trabalho\DEV\Asp.net\EntityEstudo2\obj\Debug\net8.0\EntityFrameworkEstudo.genruntimeconfig.cache
 C:\Users\saulo\OneDrive\Área de Trabalho\DEV\Asp.net\EntityEstudo2\obj\Debug\net8.0\ref\EntityFrameworkEstudo.dll
+C:\Users\saulo\OneDrive\Área de Trabalho\DEV\Asp.net\EntityEstudo2\obj\Debug\net8.0\EntityFrameworkEstudo.sourcelink.json

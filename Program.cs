@@ -12,40 +12,24 @@ namespace EntityFrameworkEstudo1
             //nao chegariamos nessa linha de instrucao no codigo
             using (var baseDeDados = new AppDbContext())
             {
-                baseDeDados.Clientes.Add(new Cliente { Nome = "Saulo" });
+                baseDeDados.Clientes.Add(new Cliente { Nome = "Saulo",Sobrenome="luiz"  });
                 baseDeDados.Clientes.Add(new Cliente { Nome = "Luiz" });
                 baseDeDados.Clientes.Add(new Cliente { Nome = "Oliveira" });
                 baseDeDados.SaveChanges();
                 Console.WriteLine("Consulta 1");
                 ConsultaClientes(baseDeDados);
-                AlterarCliente(2,"Saulo",baseDeDados);
-                Console.WriteLine("Consulta 2");
-                ConsultaClientes(baseDeDados); 
-                //LimparTabela(baseDeDados);
-                Console.WriteLine("Consulta 3");
-                ConsultaClientes(baseDeDados);
+                
                // baseDeDados.Dispose();
-               int value=0;
+              
             }
-                using (var bancoDeDados = new AppDbContext()){
-                 
-                    Console.WriteLine("Verificando se utiliza-se o mesmo db;");
-                    //A resposta é sim, ou seja, bancoDeDados é somente a conexao
-                    ConsultaClientes(bancoDeDados);
-                //ConsultaClientes(baseDeDados);
-                //essa conexao nao existe mais, pois utilizamos dentro do using
-                // e todas as variaveis utilizadas dentro do using, deixaram de existir
-
-
-
-                }
+               
 
         }
         static void ConsultaClientes(AppDbContext context)
         {
             foreach (var client in context.Clientes)
             {
-                Console.WriteLine($"Id:{client.Id} Nome:{client.Nome}");
+                Console.WriteLine($"Id:{client.Id} Nome:{client.Nome} Sobrenome:{client.Sobrenome}");
 
             }
         }
