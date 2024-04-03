@@ -7,7 +7,7 @@ namespace EntityFrameworkEstudo1
     public class Pedido{
         public int Id {get;set;}
         public decimal valor {get;set;}
-        public Cliente ClienteID;
-      
+
+        public Cliente Cliente{get;set;}
     }
 }

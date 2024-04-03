@@ -1,4 +1,6 @@
-﻿using EntityFrameWorkEstudo1;
+﻿using System.Security.AccessControl;
+using EntityFrameWorkEstudo1;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace EntityFrameworkEstudo1
 {
@@ -12,7 +14,7 @@ namespace EntityFrameworkEstudo1
             //nao chegariamos nessa linha de instrucao no codigo
             using (var baseDeDados = new AppDbContext())
             {
-               
+
                 List<string> nomes = new List<string>();
 
                 nomes.Add("Saulo");
@@ -21,14 +23,37 @@ namespace EntityFrameworkEstudo1
                 foreach (var nome in nomes)
                 {
 
-                    baseDeDados.Clientes.Add(new Cliente { Nome = nome, Sobrenome = "Sobrenome"});
+                    baseDeDados.Clientes.Add(new Cliente { Nome = nome, Sobrenome = "Sobrenome" });
                 }
 
                 baseDeDados.SaveChanges();
                 Console.WriteLine("Consulta 1");
                 ConsultaClientes(baseDeDados);
-                AdicionarPedido(1,12,baseDeDados);
+                Console.WriteLine("Digite o id que deseja adicionar o pedido de valor 120");
+                AdicionarPedido(int.Parse(Console.ReadLine()), 120, baseDeDados);
+                string auxEnd = "";
+                while (auxEnd != "fim")
+                {
+                    System.Console.WriteLine("Qual cliente deseja conferir os pedidos?(Digite Fim para finalizar o programa)");
+                    auxEnd = Console.ReadLine();
+
+                    if (auxEnd == "fim") break;
+                    else
+                    {
+                        var cliente = baseDeDados.Clientes.Find(int.Parse(auxEnd));
+                        foreach (var pedido in cliente.Pedidos)
+                        {
+                            Console.WriteLine($"Pedido {pedido.Id} valor:{pedido.valor}");
+                        }
+
+                    }
+                }
+                Console.WriteLine("Qual nome deseja encontrar o Id?");
                 
+                var buscaCliente =baseDeDados.Clientes.Where(c=>c.Nome==Console.ReadLine()).FirstOrDefault();
+                //O where retorna um conjunto, o First ou default faz com que retorne nulo se nao existir, ou o primeiro que encontrar
+                Console.WriteLine("O Id do nome buscado é "+buscaCliente.Id);
+
 
 
             }
@@ -54,15 +79,15 @@ namespace EntityFrameworkEstudo1
                 return;
             }
             //Busca pela primary key
-        
+            cliente.Pedidos.Add(new Pedido { valor = Valor });
             context.SaveChanges();
         }
         static void LimparTabela(AppDbContext tabela)
         {
             foreach (var item in tabela.Clientes)
             {
-              
-                    tabela.Clientes.Remove(item);
+
+                tabela.Clientes.Remove(item);
 
             }
             tabela.SaveChanges();

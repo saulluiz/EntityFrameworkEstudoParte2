@@ -14,7 +14,7 @@ namespace EntityFrameWorkEstudo1{
         //praaplicar mudancas, adicione uma Migration
         //dotnet ef migrations add TabelaClientesSobrenome
         //dotnet ef database update
-        public List<Pedido>? Pedidos{get;set;}
+        public List<Pedido>? Pedidos{get;set;}=new List<Pedido>();
         //ja representa o relacionamento
 
     }

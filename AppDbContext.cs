@@ -13,7 +13,7 @@ namespace EntityFrameworkEstudo1
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //fala onde esta o banco de dados
-            optionsBuilder.UseSqlServer("server=(localdb)\\mssqllocaldb;database=TesteEF4;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer("server=(localdb)\\mssqllocaldb;database=NovaBaseDeDados;Trusted_Connection=true");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
