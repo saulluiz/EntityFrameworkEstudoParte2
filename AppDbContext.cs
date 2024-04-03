@@ -13,10 +13,15 @@ namespace EntityFrameworkEstudo1
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //fala onde esta o banco de dados
-            optionsBuilder.UseSqlServer("server=(localdb)\\mssqllocaldb;database=TesteEF;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer("server=(localdb)\\mssqllocaldb;database=TesteEF4;Trusted_Connection=true");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Cliente>().Property(c=>c.Nome).HasColumnType("varchar").HasMaxLength(100);
         }
         //cada tabela do banco de dados
         public DbSet<Cliente> Clientes {get;set;}
+        public DbSet<Pedido> Pedidos {get;set;}
         //A tabela utiliza a classe clientes, ou seja, é uma tabela de que contem objetos da classe clientes
         //Os atributos dessa classe correspondem as colunas
     }

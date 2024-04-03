@@ -12,17 +12,27 @@ namespace EntityFrameworkEstudo1
             //nao chegariamos nessa linha de instrucao no codigo
             using (var baseDeDados = new AppDbContext())
             {
-                baseDeDados.Clientes.Add(new Cliente { Nome = "Saulo",Sobrenome="luiz"  });
-                baseDeDados.Clientes.Add(new Cliente { Nome = "Luiz" });
-                baseDeDados.Clientes.Add(new Cliente { Nome = "Oliveira" });
+               
+                List<string> nomes = new List<string>();
+
+                nomes.Add("Saulo");
+                nomes.Add("Cora");
+                nomes.Add("Samuel");
+                foreach (var nome in nomes)
+                {
+
+                    baseDeDados.Clientes.Add(new Cliente { Nome = nome, Sobrenome = "Sobrenome"});
+                }
+
                 baseDeDados.SaveChanges();
                 Console.WriteLine("Consulta 1");
                 ConsultaClientes(baseDeDados);
+                AdicionarPedido(1,12,baseDeDados);
                 
-               // baseDeDados.Dispose();
-              
+
+
             }
-               
+
 
         }
         static void ConsultaClientes(AppDbContext context)
@@ -31,24 +41,29 @@ namespace EntityFrameworkEstudo1
             {
                 Console.WriteLine($"Id:{client.Id} Nome:{client.Nome} Sobrenome:{client.Sobrenome}");
 
+
             }
         }
-        static void AlterarCliente(int id, string nome,AppDbContext context)
+        static void AdicionarPedido(int id, decimal Valor, AppDbContext context)
         {
-           var cliente=context.Clientes.Find(id);
-           //retorna o objeto, ou seja, um ponteiro
-           if(cliente==null){
-            Console.WriteLine("Id inexistente");
-            return;
-           }
-           //Busca pela primary key
-           cliente.Nome= nome;
-           context.SaveChanges();
+            var cliente = context.Clientes.Find(id);
+            //retorna o objeto, ou seja, um ponteiro
+            if (cliente == null)
+            {
+                Console.WriteLine("Id inexistente");
+                return;
+            }
+            //Busca pela primary key
+        
+            context.SaveChanges();
         }
-        static void LimparTabela(AppDbContext tabela){
-            foreach(var item in tabela.Clientes){
-                tabela.Clientes.Remove(item);
-                
+        static void LimparTabela(AppDbContext tabela)
+        {
+            foreach (var item in tabela.Clientes)
+            {
+              
+                    tabela.Clientes.Remove(item);
+
             }
             tabela.SaveChanges();
 
